@@ -1,9 +1,9 @@
-idea:
+php:
     build: .
     labels:
-        org.kurron.description: "JetBrains IntelliJ IDEA Java IDE"
-        org.kurron.version: "15.0.2"
-    container_name: "intellij"
+        org.kurron.description: "JetBrains PHP Storm PHP IDE"
+        org.kurron.version: "10.0.2"
+    container_name: "php-storm"
     net: "host"
     volumes:
         - /tmp/.X11-unix:/tmp/.X11-unix
