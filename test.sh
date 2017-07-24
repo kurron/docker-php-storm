@@ -2,7 +2,7 @@
 
 # Launches PhpStorm inside a Docker container
 
-IMAGE=${1:-kurron/docker-php-storm:latest}
+IMAGE=${1:-kurron/phpstorm-local:latest}
 
 DOCKER_GROUP_ID=$(cut -d: -f3 < <(getent group docker))
 USER_ID=$(id -u $(whoami))

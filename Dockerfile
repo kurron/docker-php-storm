@@ -1,17 +1,16 @@
-FROM kurron/docker-jetbrains-base:latest
+FROM kurron/docker-azul-jdk-8-build:latest
 
 MAINTAINER Ron Kurr <kurr@kurron.org>
 
-LABEL org.kurron.ide.name="PHP Storm" org.kurron.ide.version=10.0.2
+ENV WEBIDE_JDK /usr/lib/jvm/zulu-8-amd64
 
-ADD https://download.jetbrains.com/webide/PhpStorm-10.0.2.tar.gz /tmp/ide.tar.gz
+ENTRYPOINT ["/opt/PhpStorm-172.3317.83/bin/phpstorm.sh"]
 
-RUN mkdir -p /opt/ide && \
-    tar zxvf /tmp/ide.tar.gz --strip-components=1 -C /opt/ide && \
-    rm /tmp/ide.tar.gz
+USER root
 
-ENV WEBIDE_JDK=/usr/lib/jvm/oracle-jdk-8
+ADD https://download.jetbrains.com/webide/PhpStorm-2017.2.tar.gz /opt
 
-USER developer:developer
-WORKDIR /home/developer
-ENTRYPOINT ["/opt/ide/bin/phpstorm.sh"]
+RUN rm -rf /opt/PhpStorm-172.3317.83/jre64
+
+USER powerless
+
